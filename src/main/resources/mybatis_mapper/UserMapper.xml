@@ -1,0 +1,36 @@
+<!-- src/main/resources/mybatis_mapper/UserMapper.xml -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demoMyBatis.mapper.UserMapper">
+
+    <resultMap id="UserResultMap" type="com.example.demoMyBatis.model.User">
+        <id property="id" column="id_user" />
+        <result property="name" column="name" />
+        <result property="email" column="email" />
+        <result property="phoneNumber" column="phone_number" />
+    </resultMap>
+
+    <select id="getAllUsers" resultMap="UserResultMap">
+        SELECT * FROM tbl_users
+    </select>
+
+    <select id="getUserById" parameterType="int" resultMap="UserResultMap">
+        SELECT * FROM tbl_users WHERE id_user = #{id}
+    </select>
+    
+    <insert id="insertUser" parameterType="User">
+        INSERT INTO tbl_users (name, email, phone_number) VALUES (#{name}, #{email}, #{phoneNumber})
+    </insert>
+
+    <update id="updateUser" parameterType="User">
+        UPDATE tbl_users SET name = #{name}, email = #{email}, phone_number = #{phoneNumber} where id_user = #{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        DELETE FROM tbl_users WHERE id_user = #{id}
+    </delete>
+
+    <select id="getAllUserByNameContains" parameterType="String" resultMap="UserResultMap">
+        SELECT * FROM tbl_users WHERE name LIKE CONCAT('%', #{name}, '%');
+    </select>
+
+</mapper>

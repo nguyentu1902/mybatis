@@ -1,0 +1,63 @@
+<!-- src/main/resources/mybatis_mapper/GroupUsersMapper.xml -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demoMyBatis.mapper.GroupUsersMapper">
+
+    <resultMap id="GroupResultMap" type="Group">
+        <id property="id" column="id_group"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <collection property="lstUsers" ofType="com.example.demoMyBatis.model.User" column="id_group" select="getUsersByGroupId"/>
+    </resultMap>
+
+    <resultMap id="UserResultMap" type="User">
+        <id property="id" column="id_user" />
+        <result property="name" column="name" />
+        <result property="email" column="email" />
+        <result property="phoneNumber" column="phone_number" />
+    </resultMap>
+
+    <!-- Select all groups with their users -->
+    <select id="getAllGroups" resultMap="GroupResultMap">
+        SELECT * FROM tbl_group
+    </select>
+
+    <!-- Select group by ID with its users -->
+    <select id="getGroupById" parameterType="int" resultMap="GroupResultMap">
+        SELECT id_group, name, description FROM tbl_group WHERE id_group = #{id}
+    </select>
+
+    <!-- Create a new group -->
+    <insert id="createGroup" parameterType="Group" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tbl_group (name, description) VALUES (#{name}, #{description})
+    </insert>
+
+    <!-- Update an existing group -->
+    <update id="updateGroup" parameterType="Group">
+        UPDATE tbl_group SET name = #{name}, description = #{description} WHERE id_group = #{id}
+    </update>
+
+    <!-- Delete a group by ID -->
+    <delete id="deleteGroup" parameterType="int">
+        DELETE FROM tbl_group WHERE id_group = #{id}
+    </delete>
+
+    <!-- Select groups by name containing -->
+    <select id="getAllGroupByNameContains" parameterType="String" resultMap="GroupResultMap">
+        SELECT * FROM tbl_group WHERE name LIKE CONCAT('%', #{name}, '%')
+    </select>
+
+    <!-- Delete existing users for a group -->
+    <delete id="deleteUsersForGroup">
+        DELETE FROM tbl_group_users WHERE id_group = #{groupId}
+    </delete>
+
+    <!-- Insert new users into a group -->
+    <insert id="insertUsersForGroup">
+        INSERT INTO tbl_group_users (id_group, id_user) VALUES
+        <foreach collection="usersId" item="userId" separator=",">
+            (#{groupId}, #{userId})
+        </foreach>
+    </insert>
+
+
+</mapper>
