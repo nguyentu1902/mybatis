@@ -1,0 +1,36 @@
+.user-list-container {
+    margin: 20px;
+    width: 1200px;
+    margin: auto;
+}
+
+.view-details-link {
+    color: rgb(0, 0, 0);
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.view-details-link:hover {
+    color: darkblue;
+}
+
+.table-header th{
+    text-align: center;
+    background-color: #96cf85;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.table-body tr:hover{
+    color: black;
+}
+
+.css-1ex1afd-MuiTableCell-root{
+    text-align: center !important;
+}
+
+.title-list-user{
+    font-size: 20px;
+    font-weight: bold;
+}
