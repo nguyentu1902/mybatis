@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>User Management</h1>
+        
+    <h2>All Users</h2>
+    <button onclick="getAllUsers()">Get All Users</button>
+    <div id="users"></div>
+
+    <h2>Get User by ID</h2>
+    <input type="number" id="userId" placeholder="User ID">
+    <button onclick="getUserById()">Get User</button>
+    <div id="user"></div>
+
+    <h2>Create User</h2>
+    <input type="text" id="createUserName" placeholder="User Name">
+    <button onclick="createUser()">Create</button>
+
+    <h2>Update User</h2>
+    <input type="number" id="updateUserId" placeholder="User ID">
+    <input type="text" id="updateUserName" placeholder="New User Name">
+    <button onclick="updateUser()">Update</button>
+
+    <h2>Delete User</h2>
+    <input type="number" id="deleteUserId" placeholder="User ID">
+    <button onclick="deleteUser()">Delete</button>
+
+    <h2>Find Users by Name</h2>
+    <input type="text" id="searchUserName" placeholder="User Name">
+    <button onclick="findUsersByName()">Search</button>
+    <div id="searchResults"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

@@ -26,6 +26,14 @@
         SELECT id_group, name, description FROM tbl_group WHERE id_group = #{id}
     </select>
 
+    <!-- Select users by group ID -->
+    <select id="getUsersByGroupId" parameterType="int" resultMap="UserResultMap">
+        SELECT u.id_user, u.name, u.email, u.phone_number
+        FROM tbl_users u
+        JOIN tbl_group_users gu ON u.id_user = gu.id_user
+        WHERE gu.id_group = #{id_group}
+    </select>
+
     <!-- Create a new group -->
     <insert id="createGroup" parameterType="Group" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tbl_group (name, description) VALUES (#{name}, #{description})
