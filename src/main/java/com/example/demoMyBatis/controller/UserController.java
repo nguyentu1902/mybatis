@@ -55,5 +55,11 @@ public class UserController {
     public List<User> getAllUserByNameContains(@RequestParam String name){
         return userService.getAllUserByNameContains(name);
     }
+
+    //test jenkins
+    @GetMapping("/test-jenkin/{name}")
+    public String testJenkins(@PathVariable String name){
+        return "hello " + name;
+    }
     
 }
