@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demoMyBatis.model.User;
-import com.example.demoMyBatis.service.UserService;
+// import com.example.demoMyBatis.service.UserService;
 
 @RestController
 @RequestMapping("/users")
