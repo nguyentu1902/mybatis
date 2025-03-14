@@ -59,7 +59,7 @@ public class UserController {
     //test jenkins
     @GetMapping("/test-jenkin/{name}")
     public String testJenkins(@PathVariable String name){
-        return "hello " + name + "test";
+        return "hello " + name + " test";
     }
     
 }
