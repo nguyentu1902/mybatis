@@ -22,39 +22,39 @@ import com.example.demoMyBatis.service.UserService;
 @CrossOrigin("*")
 public class UserController {
     
-    @Autowired
-    private UserService userService;
+    // @Autowired
+    // private UserService userService;
 
-    @GetMapping
-    public List<User> getAllUsers(){
-        return userService.getAllUsers();
-    }
+    // @GetMapping
+    // public List<User> getAllUsers(){
+    //     return userService.getAllUsers();
+    // }
 
-    @GetMapping("{id}")
-    public User getUserById(@PathVariable int id){
-        return userService.getUserById(id);
-    }
+    // @GetMapping("{id}")
+    // public User getUserById(@PathVariable int id){
+    //     return userService.getUserById(id);
+    // }
 
-    @PostMapping
-    public void createUser(@RequestBody User user){
-        userService.createUser(user);
-    }
+    // @PostMapping
+    // public void createUser(@RequestBody User user){
+    //     userService.createUser(user);
+    // }
 
-    @PutMapping("/{id}")
-    public void updateUser(@PathVariable int id, @RequestBody User user){
-        user.setId(id);
-        userService.updateUser(user);
-    }
+    // @PutMapping("/{id}")
+    // public void updateUser(@PathVariable int id, @RequestBody User user){
+    //     user.setId(id);
+    //     userService.updateUser(user);
+    // }
 
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable int id){
-        userService.deleteUser(id);
-    }
+    // @DeleteMapping("/{id}")
+    // public void deleteUser(@PathVariable int id){
+    //     userService.deleteUser(id);
+    // }
 
-    @GetMapping("/findByName")
-    public List<User> getAllUserByNameContains(@RequestParam String name){
-        return userService.getAllUserByNameContains(name);
-    }
+    // @GetMapping("/findByName")
+    // public List<User> getAllUserByNameContains(@RequestParam String name){
+    //     return userService.getAllUserByNameContains(name);
+    // }
 
     //test jenkins
     @GetMapping("/test-jenkin/{name}")
